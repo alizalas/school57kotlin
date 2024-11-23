@@ -1,0 +1,8 @@
+debug: true
+
+logging:
+  level:
+    web: debug
+    h2: debug
+    demo:
+      application: debug

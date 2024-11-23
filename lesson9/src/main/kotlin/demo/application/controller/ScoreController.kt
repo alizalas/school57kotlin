@@ -1,23 +1,45 @@
 package demo.application.controller
 
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 import java.time.LocalDateTime
+import kotlin.system.measureNanoTime
 
 
 @RestController
 class ScoreController(
-    val logicService: LogicService,
+    val client: Client
 ) {
+    @GetMapping("/score")
+    fun score1() {
+//        val timeStart = System.currentTimeMillis()
+//        client.call()
+//        val timeFinish = System.currentTimeMillis()
+//        val duration = timeFinish - timeStart
+//        println(duration)
+//        val duration = measureNanoTime { client.call() }
+//        println(duration)
+        return
+    }
 
-    @GetMapping("score")
-    fun simpleScore(@RequestParam creditApplication: CreditApplication) =
-        logicService.simpleScore(creditApplication)
-
+    @PostMapping("/score2")
+    fun score2() {
+//        val timeStart = System.currentTimeMillis()
+//        client.call()
+//        val timeFinish = System.currentTimeMillis()
+//        val duration = timeFinish - timeStart
+//        println(duration)
+        val duration = measureNanoTime { client.call() }
+        println(duration)
+    }
 
 }
 
+//fun main(){
+//    ScoreController().simpleScore()
+//}
 data class User(
     val age: Int,
     val name: String,
