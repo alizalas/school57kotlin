@@ -13,12 +13,14 @@ import org.springframework.web.bind.annotation.RestController
 
 @Tag(name = "Скоринг заявки", description = "Эти методы предназначены для вызова из процесса оформления заявки")
 @RestController
-class ScoreController {
+class ScoreController (
+        val service: ScoreController
+) {
 
     @GetMapping("score")
     fun simpleScore(@RequestBody creditApplication: CreditApplication): Boolean {
         // Нельзя выдавать кредит клиентам не достигшим 18 лет
-        if (creditApplication.user.age <= 18) {
+        if (creditApplication.user.age < 18) {
             return false
         }
 
